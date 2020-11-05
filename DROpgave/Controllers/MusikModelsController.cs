@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ClassLibraryMusik;
 using DROpgave;
+using Microsoft.AspNetCore.Cors;
 
 namespace DROpgave.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Musik")]
     [ApiController]
     public class MusikModelsController : ControllerBase
     {
@@ -22,6 +23,7 @@ namespace DROpgave.Controllers
         }
 
         // GET: api/MusikModels
+        [EnableCors("AllowAnyOrigin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MusikModel>>> GetMusiks()
         {
@@ -29,6 +31,7 @@ namespace DROpgave.Controllers
         }
 
         // GET: api/MusikModels/5
+
         [HttpGet("{id}")]
         public async Task<ActionResult<MusikModel>> GetMusikModel(int id)
         {
@@ -48,7 +51,7 @@ namespace DROpgave.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMusikModel(int id, MusikModel musikModel)
         {
-            if (id != musikModel.id)
+            if (id != musikModel.Id)
             {
                 return BadRequest();
             }
@@ -83,7 +86,7 @@ namespace DROpgave.Controllers
             _context.Musiks.Add(musikModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMusikModel", new { id = musikModel.id }, musikModel);
+            return CreatedAtAction("GetMusikModel", new { id = musikModel.Id }, musikModel);
         }
 
         // DELETE: api/MusikModels/5
@@ -104,7 +107,7 @@ namespace DROpgave.Controllers
 
         private bool MusikModelExists(int id)
         {
-            return _context.Musiks.Any(e => e.id == id);
+            return _context.Musiks.Any(e => e.Id == id);
         }
     }
 }

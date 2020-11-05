@@ -8,14 +8,14 @@ namespace ClassLibraryMusik
 {
     public class MusikModel
     {
-        public string title { get; set; }
-        public string artist { get; set; }
-        public int duration { get; set; }
-        public int yearOfPublication { get; set; }
-        public string genre { get; set; }
+        public string Title { get; set; }
+        public string Artist { get; set; }
+        public int Duration { get; set; }
+        public int YearOfPublication { get; set; }
+        public string Genre { get; set; }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public MusikModel()
         {
@@ -24,18 +24,18 @@ namespace ClassLibraryMusik
 
         public MusikModel(string title, string artist, int duration, int yearOfPublication, string genre, int id)
         {
-            this.title = title;
-            this.artist = artist;
-            this.duration = duration;
-            this.yearOfPublication = yearOfPublication;
-            this.genre = genre;
-            this.id = id;
+            Title = title;
+            Artist = artist;
+            Duration = duration;
+            YearOfPublication = yearOfPublication;
+            Genre = genre;
+            Id = id;
         }
 
 
         public override string ToString()
         {
-            return $"title: {title}, artist: {artist}, duration: {duration}, yearOfPublication: {yearOfPublication}, genre: {genre}, id: {id}";
+            return $"Title: {Title}, Artist: {Artist}, Duration: {Duration}, YearOfPublication: {YearOfPublication}, Genre: {Genre}, Id: {Id}";
         }
     }
 }
